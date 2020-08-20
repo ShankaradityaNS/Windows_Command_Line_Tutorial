@@ -191,3 +191,150 @@ Windows Command Line-
 
 	To get multiple data at once-
 	wmic diskdrive get status, model
+	
+25) To show the different services running on computer/laptop=
+	use-
+	get-service
+
+    To find specifics like which are the services that are running or stopped. Enter-
+	get-service |
+
+    After which the ">>" comes up type-
+	>> where-Object Status -eq 'Stopped'
+
+    To get only the names and status from above generated data use -
+	get-service |
+	>> where-Object Status -eq 'Stopped' |
+	>> select-Object Name,Status
+
+    To store above generated data use-
+	$status = get-service | where-Object Status -eq 'Stopped' | select-Object Name,Status
+
+    We can then store it in a CSV file-
+	$status | out-file .\Service_Status.csv
+
+    Note: To use a csv file using notepad use:
+	notepad .\Service_Status.csv
+
+    Note: To view directly in powershell-
+	export-csv .\Service_Status_V2.csv
+    then-
+	get-content .\Service_Status_V2.csv	
+
+26) Computer associates certain file extensions with certain programs. This is how your computer knows to open 
+    Adobe when you double click a PDF file, or Microsoft Word when you double click a DOC file. You can view all 
+    the file associations your computer knows about by typing ASSOC in the command window. You’ll see the file 
+    extension and the program it’s associated with.
+
+	assoc
+
+    We can set the association by typing something like-
+	 assoc .doc=Word.Document.8.
+
+27) File Compare:
+     CMD command offers the ability to compare files and see all differences, The FC command performs either an 
+     ascii or a binary file comparison and will list all of the differences that it finds.
+
+	fc /a File1.txt File2.txt 
+     will compare two ascii files.
+
+	fc /b Picture1.jpg Picture2.jpg 
+     will do a binary compare on two images.
+
+28)  IP Configuration:
+     Using this command in the CMD command prompt returns detailed information about your current network 
+     adapter connection including:
+	Current IP Address
+	Subnet Mask
+	Default Gateway IP
+	Current domain
+    This information can help you troubleshoot router issues and other connection issues you could be having 
+    with your network adapter.
+	ipconfig 	or
+	ipconfig /all
+
+29) Network Statistics:
+    NETSTAT command in the command prompt, you can get a list of all active TCP connections from your computer.	 
+	netstat
+
+30) Send Test Packets:
+    Running this command sends test packets over the network to the target system. You can use the PING command 
+    to test whether your computer can access another computer, a server, or even a website. It can help with 
+    revealing network disconnections. It also provides transit time for the packets in milliseconds, so it 
+    also reveals a bad network connection as well.
+	ping google.com
+
+31) Trace Route:
+    TRACERT is a fascinating Windows Command to use. If you’re ever curious to see the path your internet traffic 
+    takes to get from your browser to a remote system like Google servers, you can use TRACERT to see it.The 
+    command stands for “Trace Route”, which sends packets out to a remote destination (server or website), and 
+    provides you with all of the following information:
+	Number of hops (intermediate servers) before getting to the destination
+	Time it takes to get to each hop
+	The IP and sometimes the name of each hop
+    TRACERT can reveal how the routes of your internet requests change depending where you’re accessing the web. It 
+    also helps with troubleshooting a router or switch on a local network that may be problematic.  
+	tracert google.com
+
+32) Power Configuration:
+    Frustrated with how quickly your laptop seems to run out of power. Windows CMD command called POWERCFG 
+    (power configuration) that can help. Run the command prompt as an administrator and type-
+	 powercfg – energy 
+    to get a full power efficiency report.The process can take up to about a minute, but when it’s done, you’ll see 
+    whether there are any warnings or errors that might help you improve the power efficiency of your system.
+
+33) System Information:
+    If you need to know what brand of network card you have, processor details, or the exact version of your Windows 
+    OS, the SYSTEMINFO command can help.
+	systeminfo
+
+34) System File Checker:
+    If you’re ever concerned that a virus or some other software might have corrupted your core system files, there’s 
+    a Windows command that can scan those files and ensure their integrity.You need to launch CMD as administrator 
+    (right click and choose Run as Administrator). Typing-
+	 SFC /SCANNOW 
+    will check the integrity of all protected system files. If a problem is found, the files will be repaired with 
+    backed-up system files.The SFC command also lets you:
+
+    /VERIFYONLY: Check the integrity but don’t repair the files.
+    /SCANFILE: Scan the integrity of specific files and fix if corrupted.
+    /VERIFYFILE: Verify the integrity of specific files but don’t repair them.
+    /OFFBOOTDIR: Use this to do repairs on an offline boot directory.
+    /OFFWINDIR: Use this to do repairs on an offline Windows directory.
+    /OFFLOGFILE: Specify a path to save a log file with scan results.
+    The scan can take up to 10 or 15 minutes, so give it time.
+
+35) Check Disk:
+    While the SFC command only checks the integrity of core system files, you can use the CHKDSK command to scan an 
+    entire drive.The command to check the C: drive and repair any problems, launch the command window as an administrator 
+    and type-
+	 CHKDSK /f C:.
+    This command checks for things like:
+    File fragmentation
+    Disk errors
+    Bad sectors
+    The command can fix any disk errors (if possible). When the command is finished, you’ll see a status of the scan 
+    and what actions were taken.
+
+36) Hostname Command:
+    A very simple command that displays the host name of your machine. This is much quicker than going to the control 
+    panel>system route.
+	hostname
+
+37) MAC Address Command:
+    A media access control address (MAC address) is a unique identifier assigned to a network interface controller (NIC) 
+   for use as a network address in communications within a network segment.Another very simple command that shows the MAC
+   address of your network interfaces.
+	getmac
+
+38)  Address Resolution Protocol(arp) Command:
+     The Address Resolution Protocol is a communication protocol used for discovering the link layer address, such as a 
+     MAC address, associated with a given internet layer address, typically an IPv4 address. This mapping is a critical 
+     function in the Internet protocol suite.This is used for showing the address resolution cache. This command must 
+     be used with a command line switch-
+	 arp -a 
+
+
+39) To Play Star Wars on CMD:
+    Enable the TELNET in Turn Windows Features On/Off then-
+	 telnet towel.blinkenlights.nl
