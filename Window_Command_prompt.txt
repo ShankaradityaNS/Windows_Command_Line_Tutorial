@@ -338,3 +338,21 @@ Windows Command Line-
 39) To Play Star Wars on CMD:
     Enable the TELNET in Turn Windows Features On/Off then-
 	 telnet towel.blinkenlights.nl
+	 
+40) To find out the commands available on command prompt-
+	get-command
+
+    We can find out the number of commands available by-
+	(get-command).count
+
+41) To find IP Address of any desired website-
+	nslookup <@@@@@@@.com>
+
+42) To find the wifi password of the network you are connected to-
+	First we have to type-
+	netsh wlan show profile name_of_network
+
+	Check the Security Settings and check out Security key if it shows present then a password exists.
+	To find out the password-
+	netsh wlan show profile name_of_network key=clear
+	The key content displays the password.
