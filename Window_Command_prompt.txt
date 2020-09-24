@@ -356,3 +356,26 @@ Windows Command Line-
 	To find out the password-
 	netsh wlan show profile name_of_network key=clear
 	The key content displays the password.
+
+43) To use the inbuilt Native Packet Capture Tool in Windows OS-
+    Make sure the command prompt is running in Adminstrator Mode. To check out syntax which explains what 
+    can be done using pktmon enter-
+	pktmon
+
+    To print out list of adapters, ports used and protocals involved type-
+	pktmon comp list
+
+    If more information regarding contents like WAN ports and miniports are required then-
+	pktmon comp list -i
+
+    To create a Log File to store the flow of packets-
+	pktmon start -etw -s 2
+    Here '-s 2' refers to a file of size 2MB, with the max possible file size being 512MB. We can even set the packet 
+    size with a max packet size of 128 bytes. If '-s 300' is entered the a file size of 300MB is created.
+
+    Converting the Log File whose name by default is PktMon and is a .etl file, to a viewable format-
+	pktmon pcapng PktMon.etl -o file_name.txt	to convert to a text file. We can convert it into a file viewable by the wireshark using-
+	pktmon  pcapng PktMon.etl -o file_name.pcapng
+
+    To view Wireshark format file directly type-			Similarly for text file-
+	.\file_name.pcapng								.\file_name.txt
