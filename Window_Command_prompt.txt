@@ -276,7 +276,8 @@ Windows Command Line-
     also helps with troubleshooting a router or switch on a local network that may be problematic.  
 	tracert google.com		or		tracert -d 8.8.8.8
 
-    By adding '-d' we are asking the cmd to not identify the names of the different routers it passes through and speeds up the process.
+    By adding '-d' we are asking the cmd to not identify the names of the different routers it passes through, i.e 
+    prevents Reversal DNS LookUp from running and speeds up the process.
 
 32) Power Configuration:
     Frustrated with how quickly your laptop seems to run out of power. Windows CMD command called POWERCFG 
